@@ -21,11 +21,26 @@ const ProductDetails = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const res = await fetch(`/api/products/${slug}`);
+        setLoading(true);
+        const res = await fetch(`/api/products/${slug}`, { 
+          cache: 'no-store',
+          headers: { 'Accept': 'application/json' }
+        });
+        
+        if (!res.ok) throw new Error('Failed to fetch product');
+        
         const data = await res.json();
-        setProduct(data);
-        setLoading(false);
+        console.log('Fetched product details:', data);
+        
+        if (data && (data._id || data.product)) {
+          setProduct(data.product || data);
+        } else {
+          setProduct(null);
+        }
       } catch (error) {
+        console.error('Error fetching product:', error);
+        setProduct(null);
+      } finally {
         setLoading(false);
       }
     };

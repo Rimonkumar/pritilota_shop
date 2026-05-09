@@ -5,11 +5,12 @@ import Category from '@/models/Category';
 
 export async function GET(
   req: NextRequest,
-  { params }: { params: { slug: string } }
+  { params }: { params: Promise<{ slug: string }> }
 ) {
   try {
+    const { slug } = await params;
     await connectDB();
-    const product = await Product.findOne({ slug: params.slug }).populate('category');
+    const product = await Product.findOne({ slug }).populate('category');
     if (!product) {
       return NextResponse.json({ message: 'Product not found' }, { status: 404 });
     }
