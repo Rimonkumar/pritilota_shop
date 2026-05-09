@@ -110,7 +110,7 @@ const LoginPage = () => {
           </div>
 
           <div className="flex items-center justify-end">
-            <Link href="/forgot-password" size={20} className="text-sm font-bold text-blue-600 hover:underline">
+            <Link href="/forgot-password" className="text-sm font-bold text-blue-600 hover:underline">
               Forgot Password?
             </Link>
           </div>
