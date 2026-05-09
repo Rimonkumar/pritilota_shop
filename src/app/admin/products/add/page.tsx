@@ -17,10 +17,18 @@ const productSchema = z.object({
   price: z.number().min(0, 'Price must be positive'),
   stock: z.number().min(0, 'Stock cannot be negative'),
   category: z.string().min(1, 'Category is required'),
-  isFeatured: z.boolean().default(false),
+  isFeatured: z.boolean(),
 });
 
-type ProductFormValues = z.infer<typeof productSchema>;
+type ProductFormValues = {
+  name: string;
+  slug: string;
+  description: string;
+  price: number;
+  stock: number;
+  category: string;
+  isFeatured: boolean;
+};
 
 const AddProductPage = () => {
   const router = useRouter();
