@@ -4,6 +4,10 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 First, run the development server:
 
+===============================Live Link ========================
+                         https://pritilota-shop-mmbd-git-main-rimonkumars-projects.vercel.app/
+
+
 ```bash
 npm run dev
 # or
